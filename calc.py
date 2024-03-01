@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 
@@ -38,26 +37,28 @@ def main():
 
         st.subheader("Results:")
 
+        # Display matrices using st.table for better formatting
         st.write("Matrix 1:")
-        st.write(matrix1)
+        st.table(matrix1)
 
         st.write("Matrix 2:")
-        st.write(matrix2)
+        st.table(matrix2)
 
-        st.write("Matrix Addition:")
-        st.write(result_addition)
+        # Display results in a more organized way
+        st.subheader("Matrix Addition:")
+        st.table(result_addition)
 
-        st.write("Matrix Subtraction:")
-        st.write(result_subtraction)
+        st.subheader("Matrix Subtraction:")
+        st.table(result_subtraction)
 
-        st.write("Matrix Multiplication:")
-        st.write(result_multiplication)
+        st.subheader("Matrix Multiplication:")
+        st.table(result_multiplication)
 
-        st.write(f"Scalar Multiplication with {scalar}:")
-        st.write(result_scalar_multiply)
+        st.subheader(f"Scalar Multiplication with {scalar}:")
+        st.table(result_scalar_multiply)
 
-        st.write("Transpose of Matrix 1:")
-        st.write(result_transpose)
+        st.subheader("Transpose of Matrix 1:")
+        st.table(result_transpose)
 
 if __name__ == "__main__":
     main()
