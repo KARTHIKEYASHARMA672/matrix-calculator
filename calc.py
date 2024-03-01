@@ -32,8 +32,10 @@ def main():
         result_addition = add_matrices(matrix1, matrix2)
         result_subtraction = subtract_matrices(matrix1, matrix2)
         result_multiplication = multiply_matrices(matrix1, matrix2)
-        result_scalar_multiply = scalar_multiply(matrix1, scalar)
-        result_transpose = transpose_matrix(matrix1)
+        result_scalar_multiply_for_1 = scalar_multiply(matrix1, scalar)
+        result_scalar_multiply_for_2 = scalar_multiply(matrix2, scalar)
+        result_transpose_for_1 = transpose_matrix(matrix1)
+        result_transpose_for_2 = transpose_matrix(matrix2)
 
         st.subheader("Results:")
 
@@ -55,9 +57,16 @@ def main():
         st.table(result_multiplication)
 
         st.subheader(f"Scalar Multiplication with {scalar}:")
-        st.table(result_scalar_multiply)
+        st.table(result_scalar_multiply_for_1)
+
+        st.subheader(f"Scalar Multiplication with {scalar}:")
+        st.table(result_scalar_multiply_for_2)
+
 
         st.subheader("Transpose of Matrix 1:")
+        st.table(result_transpose)
+
+        st.subheader("Transpose of Matrix 2:")
         st.table(result_transpose)
 
 if __name__ == "__main__":
