@@ -64,10 +64,10 @@ def main():
 
 
         st.subheader("Transpose of Matrix 1:")
-        st.table(result_transpose)
+        st.table(result_transpose_for_1)
 
         st.subheader("Transpose of Matrix 2:")
-        st.table(result_transpose)
+        st.table(result_transpose_for_2)
 
 if __name__ == "__main__":
     main()
