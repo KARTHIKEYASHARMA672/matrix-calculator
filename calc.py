@@ -56,10 +56,10 @@ def main():
         st.subheader("Matrix Multiplication:")
         st.table(result_multiplication)
 
-        st.subheader(f"Scalar Multiplication with {scalar}:")
+        st.subheader(f"Scalar Multiplication with {scalar} For Matrix 1:")
         st.table(result_scalar_multiply_for_1)
 
-        st.subheader(f"Scalar Multiplication with {scalar}:")
+        st.subheader(f"Scalar Multiplication with {scalar} For Matrix 2:")
         st.table(result_scalar_multiply_for_2)
 
 
