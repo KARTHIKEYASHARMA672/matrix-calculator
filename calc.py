@@ -17,7 +17,7 @@ def transpose_matrix(matrix):
     return np.transpose(matrix)
 
 def main():
-    st.title("Matrix Operations Calculator")
+    st.title(" Square Matrix Operations Calculator")
 
     st.sidebar.header("Choose Matrix Operations")
 
