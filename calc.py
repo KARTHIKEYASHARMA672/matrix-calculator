@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 
-# Define matrix operations
 def add_matrices(matrix1, matrix2):
     return np.add(matrix1, matrix2)
 
@@ -16,18 +15,20 @@ def scalar_multiply(matrix, scalar):
 
 def transpose_matrix(matrix):
     return np.transpose(matrix)
+    
+def elementwise_multiply(matrix1, matrix2):
+    return np.multiply(matrix1, matrix2)
+
 
 def main():
     st.title("Matrix Operations Calculator")
 
     st.sidebar.header("Matrix Inputs")
-    
-    # User inputs for matrices
+
     matrix1_input = st.sidebar.text_area("Enter Matrix 1 (comma-separated rows):")
     matrix2_input = st.sidebar.text_area("Enter Matrix 2 (comma-separated rows):")
     scalar = st.sidebar.number_input("Enter Scalar Value:", value=1)
 
-    # Parse matrix inputs
     def parse_matrix_input(matrix_input):
         try:
             return np.array([list(map(float, row.split(','))) for row in matrix_input.strip().split('\n') if row.strip()])
@@ -38,12 +39,21 @@ def main():
     matrix1 = parse_matrix_input(matrix1_input)
     matrix2 = parse_matrix_input(matrix2_input)
 
-    # Validate matrices
+    
+    if matrix1.shape == matrix2.shape:
+    st.subheader("Matrix Addition:")
+    st.table(add_matrices(matrix1, matrix2))
+    
+    st.subheader("Matrix Subtraction:")
+    st.table(subtract_matrices(matrix1, matrix2))
+else:
+    st.error("Addition and subtraction skipped: Matrices must have the same dimensions.")
+
+
     if matrix1 is not None and matrix2 is not None:
         if matrix1.shape != matrix2.shape:
             st.warning("Matrix 1 and Matrix 2 must have the same dimensions for addition and subtraction.")
-        
-        # Button to perform operations
+
         if st.sidebar.button("Perform Operations"):
             st.subheader("Results:")
 
@@ -53,7 +63,6 @@ def main():
             st.write("Matrix 2:")
             st.table(matrix2)
 
-            # Addition and Subtraction (if dimensions match)
             if matrix1.shape == matrix2.shape:
                 st.subheader("Matrix Addition:")
                 st.table(add_matrices(matrix1, matrix2))
@@ -63,21 +72,19 @@ def main():
             else:
                 st.error("Addition and subtraction skipped: Matrices must have the same dimensions.")
 
-            # Multiplication (check compatibility)
             if matrix1.shape[1] == matrix2.shape[0]:
                 st.subheader("Matrix Multiplication:")
                 st.table(multiply_matrices(matrix1, matrix2))
             else:
                 st.error("Matrix multiplication skipped: The number of columns in Matrix 1 must equal the number of rows in Matrix 2.")
 
-            # Scalar Multiplication
+
             st.subheader(f"Scalar Multiplication (Matrix 1 × {scalar}):")
             st.table(scalar_multiply(matrix1, scalar))
 
             st.subheader(f"Scalar Multiplication (Matrix 2 × {scalar}):")
             st.table(scalar_multiply(matrix2, scalar))
 
-            # Transpose
             st.subheader("Transpose of Matrix 1:")
             st.table(transpose_matrix(matrix1))
 
